@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" href="css/signup.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+        <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+        <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components-blue-basic-theme.css">
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script src="lib/onsenui/js/onsenui.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="profile.css">
+    <script src="lib/onsenui/js/onsenui.js"></script>
+<style>
+.profile-card {
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 30px 0;
+  line-height: 1.4;
+  background-color: #33393c;
+  text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 0px;
+}
+
+.profile-image {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background-color: black;
+  border 1px solid white;
+  box-shadow:rgba(0, 0, 0, 0.2) 0px 2px 0px 0px;
+  -webkit-box-shadow:rgba(0, 0, 0, 0.2) 0px 2px 0px 0px;
+}
+
+.profile-name {
+  margin: 20px 0 0 0;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.profile-id {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.profile-desc {
+  font-size: 15px;
+  opacity: 0.6;
+  width: 90%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.info-col {
+  height: 60px;
+  line-height: 1;
+  padding: 12px 0 12px 4px;
+}
+
+.info-num {
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.info-unit {
+  margin-top: 6px;
+  font-size: 14px;
+  opacity: 0.4;
+}
+</style>
+<script>
+var currentDoctor = parseInt(localStorage.getItem('currentDoctor'));
+ var docList = JSON.parse(localStorage.getItem("docList"));
+ console.log(typeof(currentDoctor));
+ console.log('currentDoctor');
+ console.log(currentDoctor);
+ console.log('docList');
+ console.log(docList);
+ console.log('docList[currentDoctor].name');
+ console.log(docList[currentDoctor].name);
+
+        $(function() {
+            $('#doctorProfile').append('<img src="img/me.JPG" class="profile-image"><div class="profile-name">'+docList[currentDoctor].name+'</div><div class="profile-id">'+docList[currentDoctor].phone+'</div><div class="profile-id">'+docList[currentDoctor].location+'</div><div class="profile-desc">'+''+'</div></div><ons-list><ons-list-item><ons-row><ons-col class="info-col"><div class="info-num">87</div><div class="info-unit">Comments</div></ons-col><ons-col class="info-col"><div class="info-num">40</div><div class="info-unit">Following</div></ons-col><ons-col class="info-col"><div class="info-num">38</div><div class="info-unit">Followers</div></ons-col></ons-row></ons-list-item></ons-list><ons-list modifier="inset" style="margin-top: 10px"><ons-list-item modifier="chevron">' + docList[currentDoctor].specialtyDesc + '</ons-list-item><ons-list-item modifier="chevron">' + docList[currentDoctor].bio + '</ons-list-item>');
+            //$('#listOfDoctors').append('<ons-row><ons-col align="center" class="contact-name">'+docList[i].name+'</ons-col></ons-row>');
+          });
+          
+</script>
+  </head>
+  <body>
+
+    <ons-page>
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">Profile</div>
+        <div class="right">
+          <ons-toolbar-button><ons-icon icon="ion-gear-a" style="vertical-align: -4px; font-size: 28px;"></ons-icon></ons-toolbar-button>
+        </div>
+      </ons-toolbar>
+
+      <div class="profile-card" id="doctorProfile">
+
+        
+
+    </ons-page>
+
+  </body>
+</html>

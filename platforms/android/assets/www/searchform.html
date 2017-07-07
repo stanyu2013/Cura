@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cura">
+    <head>
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" href="css/signup.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+        <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+        <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components-blue-basic-theme.css">
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script src="lib/onsenui/js/onsenui.js"></script>
+		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+        <style>
+        .toolbar-button,
+        .toolbar-button--outline,
+        .toolbar-button--quiet {
+          font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          font-weight: 400;
+          font-size: 17px;
+          padding: 4px 10px;
+          letter-spacing: 0;
+          color: rgba(38,100,171,0.81);
+          text-shadow: 0 1px none;
+          vertical-align: baseline;
+          background-color: rgba(0,0,0,0);
+          -webkit-border-radius: 2px;
+          border-radius: 2px;
+          border: 1px solid transparent;
+          font-weight: 400;
+          font-size: 17px;
+          -webkit-transition: none;
+          -moz-transition: none;
+          -o-transition: none;
+          transition: none;
+          vertical-align: middle;
+        }
+        .toolbar-button:active,
+        .toolbar-button--outline:active,
+        .toolbar-button--quiet:active {
+          background-color: rgba(0,0,0,0);
+          -webkit-transition: none;
+          -moz-transition: none;
+          -o-transition: none;
+          transition: none;
+          opacity: 0.2;
+        }
+        .toolbar-button:disabled,
+        .toolbar-button[disabled] {
+          opacity: 0.3;
+          cursor: default;
+          pointer-events: none;
+        }
+        .toolbar-button:focus,
+        .toolbar-button--outline:focus,
+        .toolbar-button--quiet:focus {
+          outline: 0;
+          -webkit-transition: none;
+          -moz-transition: none;
+          -o-transition: none;
+          transition: none;
+        }
+        .toolbar-button:hover,
+        .toolbar-button--outline:hover,
+        .toolbar-button--quiet:hover {
+          -webkit-transition: none;
+          -moz-transition: none;
+          -o-transition: none;
+          transition: none;
+        }
+        .toolbar-button--outline {
+          border: 1px solid rgba(38,100,171,0.81);
+          margin: auto 8px;
+          padding-left: 6px;
+          padding-right: 6px;
+        }
+        .toolbar-button--material {
+          font-size: 21px;
+          color: #ffffff;
+          padding: 0;
+        }
+        .toolbar-button--material:active {
+          opacity: 1;
+        }
+        .toolbar-button--material:not(:last-child) {
+          margin-right: 10px;
+        }
+
+
+        .fab {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        padding: 0;
+        margin: 0;
+        font: inherit;
+        color: inherit;
+        background: transparent;
+        border: none;
+        line-height: normal;
+        font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-weight: 400;
+        font-size: 17px;
+        cursor: default;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        font-family: 'Roboto', 'Noto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        width: 56px;
+        height: 56px;
+        text-decoration: none;
+        font-size: 25px;
+        line-height: 56px;
+        letter-spacing: 0;
+        color: #fafafa;
+        vertical-align: middle;
+        text-align: center;
+        background-color: rgba(38,100,171,1);
+        border: 0px solid currentColor;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        overflow: hidden;
+        -webkit-box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.4);
+        box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.4);
+        -webkit-transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        display: -webkit-inline-box;
+        display: -webkit-inline-flex;
+        display: -moz-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -moz-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+        align-content: center;
+      }
+      .fab:active {
+        -webkit-box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.4);
+        box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.4);
+        background-color: rgba(38,100,171,1);
+        -webkit-transition: all 0.2s ease;
+        -moz-transition: all 0.2s ease;
+        -o-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+      }
+      .fab:focus {
+        outline: 0;
+      }
+      .fab__icon {
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        display: block;
+        -webkit-border-radius: 100%;
+        border-radius: 100%;
+        padding: 0;
+        z-index: 100;
+        line-height: 56px;
+      }
+      .fab:disabled,
+      .fab[disabled] {
+        background-color: rgba(0,0,0,0.5);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        opacity: 0.3;
+        cursor: default;
+        pointer-events: none;
+      }
+      .fab--top__right {
+        top: 20px;
+        bottom: auto;
+        right: 20px;
+        left: auto;
+        position: fixed;
+      }
+      .fab--bottom__right {
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+        left: auto;
+        position: fixed;
+      }
+      .fab--top__left {
+        top: 20px;
+        bottom: auto;
+        right: auto;
+        left: 20px;
+        position: fixed;
+      }
+      .fab--bottom__left {
+        top: auto;
+        bottom: 20px;
+        right: auto;
+        left: 20px;
+        position: fixed;
+      }
+      .fab--top__center {
+        top: 20px;
+        bottom: auto;
+        margin-left: -28px;
+        left: 50%;
+        right: auto;
+        position: fixed;
+      }
+      .fab--bottom__center {
+        top: auto;
+        bottom: 20px;
+        margin-left: -28px;
+        left: 50%;
+        right: auto;
+        position: fixed;
+      }
+        </style>
+        <script>
+
+        var watchID = null;
+
+<!--// device APIs are available-->
+<!--//-->
+<!--//      function onDeviceReady() {-->
+<!--//          // Get the most accurate position updates available on the-->
+<!--//          // device.-->
+<!--//          var options = { enableHighAccuracy: true, maximumAge: 100000 };-->
+<!--//          navigator.geolocation.getCurrentPosition(showCountry,-->
+<!--//                  onError, options);-->
+<!--//-->
+<!--//      }options-->
+
+function doWork() {
+    var options = { enableHighAccuracy: true, maximumAge: 100000 };
+    navigator.geolocation.getCurrentPosition(showCountry,
+            onError, options);
+}
+
+
+
+// clear the watch that was started earlier
+function clearWatch() {
+    if (watchID != null) {
+        navigator.geolocation.clearWatch(watchID);
+        watchID = null;
+    }
+}
+
+// onError Callback receives a PositionError object
+function onError(error) {
+    alert('code: '    + error.code    + '\n' +
+            'message: ' + error.message + '\n');
+}
+
+
+function showCountry(position) {
+    geocoder = new google.maps.Geocoder();
+    var lat = parseFloat(position.coords.latitude);
+    var lng = parseFloat(position.coords.longitude);
+
+    var latlng = new google.maps.LatLng(lat, lng);
+
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            if (results[0]) {
+                var arrAddress = results[0].address_components;
+                // iterate through address_component array
+                $.each(arrAddress, function (i, address_component) {
+                    if (address_component.types[0] == "locality") {
+                        console.log(address_component.long_name); // city
+                        alert(address_component.long_name);
+                        return false; // break
+                    }
+                });
+            } else {
+                alert("No results found");
+            }
+        } else {
+            alert("Geocoder failed due to: " + status);
+        }
+    });
+}
+
+        $(function() {
+
+          var symptomDiagnosis = [
+
+
+            ["Tears", "Conjunctivitis", "psychiatry-neurology-addiction-medicine"],
+            ["Pain in the limbs", "Osteoarthritis","orthopedic-chiropractor"],
+            ["Pain on swallowing", "Strep Throat", "ear-nose-throat-doctor"],
+            ["Palpitations", "Arrhythmia", "cardiologist"],
+            ["Paralysis", "Stroke", "neurologist"],
+            ["Reduced appetite", "Metabolic problems", "nutritionist"],
+            ["Runny nose", "Influenza", "general-practitioner"],
+            ["Shortness of breath", "Asthma", "allergist"],
+            ["Skin rash", "Fungal infection", "infectious-disease-doctor"],
+            ["Sleeplessness", "Depression", "adult-psychologist"],
+            ["Itching in the nose", "Allergic rhintis", "allergist"],
+            ["Lip swelling", "Granulomatous chelitis", "oral-surgeon"],
+            ["Memory gap", "Head injury", "neurologist"],
+            ["Menstruation disorder", "Hyperthyroidism", "reproductive-erndocrinologist"],
+            ["Tiredness", "Anaemia, Fatigue", "general-practitioner"]
+          ];
+        var chosenSpecialties = [];
+        for(var i = 0; i < symptomDiagnosis.length; i++){
+          console.log(symptomDiagnosis[i]);
+          
+          $('#symptoms').append('<option data-id="'+symptomDiagnosis[i][1] + '" data-illness="' + symptomDiagnosis[i][2] + '" value="'+symptomDiagnosis[i][0]+'">' + symptomDiagnosis[i][0] + '</option>');
+        }
+
+        $("#addSymptom").click(function() {
+          console.log('add button is clicked');
+          $('#symptomsList').show();
+          $(this).hide();
+        });
+
+        var symptomIDS = [];
+        $('#symptomsList').bind('input',function(){
+          //$('#selectedSymptoms').append($(this).val());
+          
+          var option = $('#symptoms').find("[value='"+$(this).val()+"']");
+          var obj = "";
+          var id = option.data("id");
+          var illness = option.data("illness");
+          chosenSpecialties.push(illness);
+          $('#selectedSymptoms').append('<button style="margin-bottom:8px;" class="toolbar-button toolbar-button--outline" id="'+id+'">'+ $(this).val() + '</button>');
+
+          symptomIDS.push(id);          
+          console.log(option);
+          $(this).val('');
+        });
+      $("#diagnoseButton").click(function(){
+        console.log("Clicked");
+        window.doctorsList = [];
+        for (var i = 0; i < chosenSpecialties.length; i++) {
+           
+            
+            //Gets the doctors
+            var doctorsLink = "https://api.betterdoctor.com/2016-03-01/doctors";
+            //var lat = parseFloat(position.coords.latitude);
+            //var lng = parseFloat(position.coords.longitude);
+            var data = {
+                specialty_uid: chosenSpecialties[i],
+                user_key: "51f2bd1a780ad0a24d7472bfafd153ae",
+                location: "29.189919,-81.0503751,400",
+                limit: 40
+            };
+            
+            $.get(doctorsLink, data, function(e) {
+                
+                for (var i = 0; i < e.data.length; i++) {
+                    
+                    /*
+                    * TODO Change basee code with this
+                    */
+                    var doctor = e.data[i];
+                    var docName = doctor.practices[0].name;
+                    var distance = doctor.practices[0].distance;
+                    var specialty = doctor.specialties[0].name;
+                    var phone = doctor.practices[0].phones[0].number;
+                    //var insurance = window.insuranceUID;
+                    var specialtyDesc = doctor.specialties[0].description;
+                    var bio = doctor.profile.bio;
+                    var docLocation = doctor.practices[0].visit_address.city + ", " + doctor.practices[0].visit_address.state_long;
+                    
+                    var docObj = {
+                        name: docName,
+                        'distance': distance,
+                        'location': docLocation,
+                        'phone': phone,
+                        'bio': bio,
+                        //'insurance_uid': insurance,
+                        'specialty': specialty,
+                        'specialtyDesc': specialtyDesc
+                    };
+                    
+                    /*
+                    * END TODO
+                    */
+                    var found = false;
+                    for (var j = 0; j < window.doctorsList.length; j++) {
+                        if (window.doctorsList[j].name == docName) {
+                            found = true;
+                            break;
+                        }
+                    }
+                    
+                    if (found == false) {
+                        window.doctorsList.push(docObj);
+
+                    }
+                }
+                window.doctorsList.sort(function(a, b) {
+                  return a.distance - b.distance
+                });
+                localStorage.setItem("docList", JSON.stringify(window.doctorsList));
+                console.log(window.doctorsList);
+                window.location.href="doctorlist.html";
+
+                
+                //Navigates to list area
+            });
+            //maxUID = "";
+        }
+
+      });
+        
+      });
+      
+      
+      
+      </script>
+      <title>Welcome to Cura!</title>
+    </head>
+    
+
+
+    <ons-page id="signup.html">
+      <ons-toolbar>
+        <div class="center">Sick? Tell us your symptoms!</div>
+      </ons-toolbar>
+
+      <div class="vspc form-row">
+        <ons-button modifier="large--cta" id="addSymptom" style="color:white; text-decoration:none">Add Symptom</ons-button>
+      </div>
+
+      <div class="formarea">
+        <div class="form-row">
+        <datalist id="symptoms">
+        </datalist>
+        <input type="text" class="text-input--underbar width-full" list="symptoms" placeholder="Symptoms" style="display:none;" id="symptomsList">
+        </div>
+      </div>
+
+      <div id="selectedSymptoms"></div>
+
+
+        <!--<p id="geolocation">Watching geolocation...</p>
+        <button onclick="clearWatch();">Clear Watch</button>
+        <ons-button onclick="doWork();">Show Where I Am</ons-button>-->
+
+      <div id="next" style="position: absolute; bottom: 0; right:0;">
+        <button class="fab" id ="diagnoseButton"><img src="img/arrow.png"/></button>
+      </div>
+    </ons-page>
+
+</html>
